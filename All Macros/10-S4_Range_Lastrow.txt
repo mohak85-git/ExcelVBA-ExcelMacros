@@ -1,0 +1,48 @@
+Option Explicit
+
+Sub Range_Lastrow()
+    
+    Dim iRow As Integer
+    Dim iCol As Integer
+    
+    '*** Clear the cells for subsequent runs ***
+    Range("K6:K12").ClearContents
+    Range("A5", "A" & Cells(Rows.Count, 1).End(xlUp).Row).EntireRow.Interior.Color = Excel.Constants.xlNone
+    
+    '*** Find the last row ***
+    'Range("K6").Value = Range("A4").End(xlDown).Row        '*** find the row before empty row in current region
+    'Range("K6").Value = Range("A10000").End(xlUp).Row  '*** Find last row used on the sheet
+    'Range("K6").Value = Cells(Rows.Count, 1).End(xlUp).Row
+    Range("K6").Value = Range("A" & Rows.Count).End(xlUp).Row   '*** Find last row used on the sheet
+    
+    '*** Find the next empty row ***
+    'Range("K7").Value = Range("A" & Rows.Count).End(xlUp).Row + 1
+    Range("K7").Value = Range("A4").End(xlDown).Row + 1
+    
+    '*** Find the last column ***
+    'Range("K8").Value = Range("A4").End(xlToRight).Column
+    Range("K8").Value = Cells(4, Columns.Count).End(xlToLeft).Column
+    
+    '*** Address of current region ***
+    Range("K9").Value = Range("A4").CurrentRegion.Address
+    
+    '*** No of rows in data set ***
+    Range("K10").Value = Range("A4").CurrentRegion.Rows.Count
+            
+    '*** Find last row used on the sheet ***
+    Range("K11").Value = Cells.SpecialCells(xlCellTypeLastCell).Row
+    'Range("K11").Value = Cells.SpecialCells(xlCellTypeLastCell).Column
+    'Range("K11").Value = Cells.SpecialCells(xlCellTypeLastCell).Address
+    
+    Range("K12").Value = ActiveSheet.UsedRange.Rows.Count
+    
+    'Range("A" & Rows.Count).End(xlUp).EntireRow.Interior.Color = VBA.ColorConstants.vbRed
+    
+    iRow = Range("A" & Rows.Count).End(xlUp).Row
+    iCol = Cells(4, Columns.Count).End(xlToLeft).Column
+    Range("A1").Select
+    'Cells(iRow, iCol).Interior.Color = VBA.ColorConstants.vbRed
+    Range(Cells(iRow, 1), Cells(iRow, iCol)).Interior.Color = VBA.ColorConstants.vbRed
+    Columns("K:K").AutoFit
+    
+End Sub

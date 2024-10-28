@@ -1,0 +1,15 @@
+Sub Slower_code()
+'for tab Faster
+    Dim ShNew As Worksheet
+    Dim cell As Range
+    Application.StatusBar = "Wait"
+    Set ShNew = Worksheets.Add
+    For Each cell In ShNew.Range("A1:A100000")
+        cell.Value = 10
+    Next cell
+
+    ShNew.Delete
+    Sheet8.Select
+    Application.StatusBar = ""
+
+End Sub

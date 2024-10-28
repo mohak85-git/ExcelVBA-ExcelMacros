@@ -1,0 +1,10 @@
+
+Sub VBA_Simple_InputBox()
+    
+    Dim myInp As String
+    myInp = VBA.Interaction.InputBox("Please input subtitle", "Subtitle please...")
+    
+    If myInp = "" Then Exit Sub
+    
+    Range("A2").Value = Excel.WorksheetFunction.Proper(myInp)
+End Sub

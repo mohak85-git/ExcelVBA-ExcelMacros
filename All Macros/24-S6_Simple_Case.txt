@@ -1,0 +1,13 @@
+Sub Simple_Case()
+    Select Case Range("b3").Value
+        Case 1 To 200
+            Range("C3").Value = "Good"
+        Case 0
+            Range("C3").Value = ""
+        Case Is > 200
+            Range("C3").Value = "Excellent"
+        Case Else
+            Range("C3").Value = "Bad"
+    
+    End Select
+End Sub

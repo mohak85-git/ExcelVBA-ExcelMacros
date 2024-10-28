@@ -1,0 +1,19 @@
+Option Explicit
+
+Sub HighlightFormulas()
+'
+' Keyboard Shortcut: Ctrl+Shift+F
+'
+'Task 2: Highlight Formulas
+
+    Selection.CurrentRegion.Select
+    Selection.SpecialCells(xlCellTypeFormulas, 23).Select
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .Color = 65535
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+    
+End Sub

@@ -1,0 +1,14 @@
+
+Sub Simple_Goto()
+    
+    Range("D3").Value = ""
+    If VBA.IsError(Range("B3").Value) Then GoTo GetOut
+    Range("C3").Value = Range("B3").Value
+    
+    Exit Sub
+    
+GetOut:
+Range("D3").Value = "You have an error in the cell"
+Range("C3").Value = ""
+
+End Sub

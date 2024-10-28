@@ -1,0 +1,37 @@
+
+Sub GetMyValue()
+    
+   Dim myValue As Double
+   Dim p As Variant
+
+    'assign value and percentage from cells
+    myValue = Range("A8").Value
+    p = Range("B8").Value
+   
+    If Application.WorksheetFunction.IsNumber(p) = True Then
+        'if there is a percentage value
+        Call myCalc(myValue, p)
+    Else
+        myCalc myValue, 1
+    End If
+   
+    MsgBox myValue & " :End Result"
+     
+ 
+End Sub
+
+'to try the difference between byRef (default) and byVal, change GetValue inside myCalc to ByVal Getvalue as you see in the commented code block below
+
+Private Sub myCalc(GetValue As Double, myPercent)
+
+    GetValue = GetValue * myPercent
+    MsgBox GetValue & " :Inside Private"
+    
+End Sub
+
+'Private Sub myCalc(ByVal GetValue, myPercent)
+'
+'    GetValue = GetValue * myPercent
+'    MsgBox GetValue & " :Inside Private"
+'
+'End Sub

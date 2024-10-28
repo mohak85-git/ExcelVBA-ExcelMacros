@@ -1,0 +1,22 @@
+Option Explicit
+
+Sub File_Exists()
+
+'Task 1 : Check if a file exists.
+    
+    Dim FileName As String
+'    FileName = VBA.FileSystem.Dir("C:\Users\moham\OneDrive\Current Learning - 05Oct2023\Unlock Excel VBA and Excel Macros - Udemy\Hands-On\IconSets.xlsx", vbNormal)
+'    FileName = Dir("C:\Users\moham\OneDrive\Current Learning - 05Oct2023\Unlock Excel VBA and Excel Macros - Udemy\Hands-On\IconSets.xlsx")
+    FileName = Dir("C:\Users\moham\OneDrive\Current Learning - 05Oct2023\Unlock Excel VBA and Excel Macros - Udemy\Hands-On\Icon*.xls?")
+    
+    If FileName = VBA.Constants.vbNullString Then
+        MsgBox "File does not exist."
+    Else
+'        MsgBox FileName
+        Workbooks.Open "C:\Users\moham\OneDrive\Current Learning - 05Oct2023\Unlock Excel VBA and Excel Macros - Udemy\Hands-On\" & FileName
+    End If
+    
+End Sub
+
+
+

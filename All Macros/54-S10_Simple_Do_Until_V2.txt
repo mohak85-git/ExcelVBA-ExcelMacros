@@ -1,0 +1,9 @@
+
+Sub Simple_Do_Until_V2()
+    Dim StartCell As Integer
+    StartCell = 8
+    Do Until StartCell = 14
+        Range("C" & StartCell).Value = Range("A" & StartCell).Value + 10
+        StartCell = StartCell + 1
+    Loop
+End Sub

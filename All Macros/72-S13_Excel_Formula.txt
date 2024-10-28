@@ -1,0 +1,20 @@
+Sub Excel_Formula()
+    Dim LastRow As Long
+    Dim r As Integer
+    
+    LastRow = Range("A" & Rows.Count).End(xlUp).Row
+    
+    Range("F9").FormulaR1C1 = "=IF(VALUE(LEFT(RC[-4],1))=8,RC[-1]-50,"""")"
+    Range("F9").AutoFill Destination:=Range("F9:F" & LastRow)
+    Application.Calculate
+
+    'reset color
+    Range("A9", "E" & LastRow).Interior.Color = xlNone
+    
+    'change color if value in F is <=100
+    For r = 9 To LastRow
+        If Range("F" & r).Value <= 100 Then
+            Range("A" & r, "E" & r).Interior.Color = VBA.ColorConstants.vbRed
+        End If
+    Next r
+End Sub

@@ -1,0 +1,14 @@
+
+Sub Reference_Worksheet()
+
+    'Dim Sh As Worksheet
+    'Set Sh = ActiveSheet
+
+    'Worksheets(6).Select
+    'Worksheets("Worksheet").Range("A3").Value = "I will copy data here"
+    'Sheet6.Range("A3").Value = ""
+    
+    ShSource.Range("A4").CurrentRegion.Copy ShDest.Range("A4")
+    
+
+End Sub

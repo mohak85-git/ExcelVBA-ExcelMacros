@@ -1,0 +1,13 @@
+Option Explicit
+
+Sub Activity_DeleteComments()
+'
+' Activity_DeleteComments Macro
+' "This macro deletes all the comments on the active sheet".
+'
+' Keyboard Shortcut: Ctrl+Shift+D
+'
+
+    Selection.SpecialCells(xlCellTypeComments).Select
+    Selection.ClearComments
+End Sub

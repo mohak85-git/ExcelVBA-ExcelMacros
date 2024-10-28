@@ -1,0 +1,22 @@
+Option Explicit
+
+Sub Create_PDF()
+    Dim PDFTable As Object
+    Dim PDFSheets() As String
+    Dim c As Byte   ' for number of tabs to be exported
+    Dim FileName As String
+    
+    FileName = ThisWorkbook.Path & "\PDFExport"
+    Set PDFTable = Worksheets("PDF").ListObjects("PDFTable")
+    ReDim PDFSheets(1 To PDFTable.DataBodyRange.Rows.Count)
+    ' fill up the array
+    For c = 1 To UBound(PDFSheets)
+        PDFSheets(c) = PDFTable.DataBodyRange(c, 1).Value
+    Next c
+    Worksheets(PDFSheets).Select
+    ActiveSheet.ExportAsFixedFormat xlTypePDF, FileName
+    Worksheets("PDF").Select
+    
+    MsgBox "PDF file was created." & vbNewLine & "File is called PDFExport. It is save on the same directory as this workbook."
+    
+End Sub

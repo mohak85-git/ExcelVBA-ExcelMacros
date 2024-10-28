@@ -1,0 +1,46 @@
+Option Explicit
+'all for tab SubScopeArg
+
+Private Sub Entry_Point()
+
+    With Application
+        .StatusBar = "Short wait"
+        .ScreenUpdating = False
+        .Calculation = xlCalculationManual
+        .DisplayAlerts = False
+    
+    End With
+    
+End Sub
+
+
+Private Sub Exit_Point()
+
+    With Application
+        .ScreenUpdating = True
+        .Calculation = xlCalculationAutomatic
+        .DisplayAlerts = True
+        .StatusBar = ""
+        'in case you have used the copy and pastespecial methods, you could have a lot of data on the clipboard.
+        .Application.CutCopyMode = False
+    End With
+End Sub
+
+Sub Do_Stuff()
+
+    Dim ShNew As Worksheet
+    Dim cell As Range
+    
+    Call Entry_Point
+
+    Set ShNew = Worksheets.Add
+    For Each cell In ShNew.Range("A1:A100000")
+        cell.Value = 10
+    Next cell
+    
+    ShNew.Delete
+    Sheet8.Select
+    
+    Exit_Point
+
+End Sub

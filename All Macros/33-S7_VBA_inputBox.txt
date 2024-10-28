@@ -1,0 +1,13 @@
+
+
+Sub VBA_inputBox()
+    Dim CName As String
+    Dim NextRow As Long
+    
+    CName = VBA.InputBox("Please input new Customer Name", "Customer Master")
+    NextRow = Cells(Rows.Count, 1).End(xlUp).Row + 1
+    Range("A" & NextRow).Value = Excel.WorksheetFunction.Proper(CName)
+    
+    'Columns("A:A").AutoFit
+    
+End Sub

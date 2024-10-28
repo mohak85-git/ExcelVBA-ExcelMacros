@@ -1,0 +1,7 @@
+Sub Clear_Values_For_Next_Loop()
+    Dim LastRow As Long
+    Const StartRow As Byte = 10
+    LastRow = Range("A" & Rows.Count).End(xlUp).Row
+    Range("H" & StartRow, "I" & LastRow).ClearContents
+End Sub
+

@@ -1,0 +1,10 @@
+
+Sub Simple_Do_Until_Conditional()
+    Dim StartCell As Integer
+    StartCell = 8
+    Do Until StartCell = 14
+        If Range("A" & StartCell).Value = 0 Then Exit Do
+        Range("D" & StartCell).Value = Range("A" & StartCell).Value + 10
+        StartCell = StartCell + 1
+    Loop
+End Sub

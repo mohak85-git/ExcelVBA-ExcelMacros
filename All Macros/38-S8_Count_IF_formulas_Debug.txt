@@ -1,0 +1,16 @@
+Sub Count_IF_formulas_Debug()
+'for tab Debug
+    Dim cell As Range
+    Dim CountFormula As Long
+    
+        For Each cell In ActiveSheet.UsedRange
+            If cell.HasFormula Then
+                CountFormula = CountFormula + 1
+            End If
+        Next cell
+        MsgBox "There are " & CountFormula & " formulas on this worksheet"
+        
+End Sub
+
+
+

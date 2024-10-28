@@ -1,0 +1,11 @@
+Option Explicit
+Sub Absolute_Recording()
+'
+' Absolute_Recording Macro
+'
+
+'
+    Range("A3").Select
+    Selection.End(xlDown).Select
+    Range("A9").Select
+End Sub

@@ -1,0 +1,11 @@
+
+Sub Input_Number_only()
+    
+    Dim myAnswer As String
+    Do While IsNumeric(myAnswer) = False
+    
+        myAnswer = VBA.InputBox("Please input Quantity")
+        If IsNumeric(myAnswer) Then MsgBox " Well Done!"
+    Loop
+    
+End Sub

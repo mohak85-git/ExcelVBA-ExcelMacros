@@ -1,0 +1,21 @@
+Public Sub DefiningVariables()
+    Dim lastrow As Long
+'    Dim vvar As Variant
+
+    Let lastrow = Rows.Count
+    
+    Debug.Print lastrow
+'    Debug.Print TypeName(vvar)
+
+'    Dim MyMonth(11) As String
+    Dim MyMonth(1 To 12) As String
+    MyMonth(1) = "Jan"
+    MyMonth(2) = "Feb"
+    MyMonth(12) = "Dec"
+    
+    Dim MonthSales(1 To 12, 1 To 3) As Variant
+    
+    Const myScenario As String = "Actual"
+    Const ProfitCen As Long = 9999
+    
+End Sub

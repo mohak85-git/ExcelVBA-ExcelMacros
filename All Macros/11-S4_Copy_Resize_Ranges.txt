@@ -1,0 +1,32 @@
+Option Explicit
+
+Sub Copy_Resize_Ranges()
+
+    '-------------
+    'Copy Method
+    '-------------
+    Range("J4").CurrentRegion.Clear
+    'Range("A4:E10").Copy Range("J4")
+    Range("A4").CurrentRegion.Copy Range("J4")
+    
+    '-----------------
+    'PasteSpecial Method
+    '-----------------
+    Range("J20").CurrentRegion.Clear
+    'Range("J20").CurrentRegion.ClearComments
+    Range("A4").CurrentRegion.Copy
+    Range("J20").PasteSpecial xlPasteValues
+    'Range("J20").PasteSpecial xlPasteFormulasAndNumberFormats
+    'Range("J20").PasteSpecial xlPasteComments
+    
+    '-----------------
+    'Resize Property with Copy Method
+    '-----------------
+    Range("A20").CurrentRegion.Clear
+    Range("A4").CurrentRegion.Offset(1, 0).Resize(Range("A4").CurrentRegion.Rows.Count - 1).Copy
+    Range("A20").PasteSpecial xlPasteValuesAndNumberFormats
+    
+    Application.CutCopyMode = False
+    Range("A4").Select
+    
+End Sub

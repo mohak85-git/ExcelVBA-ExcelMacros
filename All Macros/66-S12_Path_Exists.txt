@@ -1,0 +1,27 @@
+Sub Path_Exists()
+
+'Task 2 : Check if a path exists.
+
+    Dim Path As String
+    Dim Folder As String
+    Dim Answer As VbMsgBoxResult
+    
+    Path = "C:\Users\moham\Desktop\Temp"
+    Folder = Dir(Path, vbDirectory)
+    
+    If Folder = vbNullString Then
+        Answer = MsgBox("Path does not exist. Would you like to create it?", vbYesNo, "Create path?")
+    
+        Select Case Answer
+            Case vbYes:
+                VBA.FileSystem.MkDir (Path)
+            Case Else:
+                Exit Sub
+        End Select
+    
+    Else
+        MsgBox "Folder exists."
+    End If
+
+End Sub
+

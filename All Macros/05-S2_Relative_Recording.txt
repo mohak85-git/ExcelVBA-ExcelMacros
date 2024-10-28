@@ -1,0 +1,13 @@
+Option Explicit
+
+Sub Relative_Recording()
+'
+' Relative_Recording Macro
+'
+
+'
+
+    ActiveCell.Offset(-1, -1).Range("A1").Select
+    Selection.End(xlDown).Select
+    ActiveCell.Offset(1, 0).Range("A1").Select
+End Sub

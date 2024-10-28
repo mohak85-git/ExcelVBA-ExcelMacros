@@ -1,0 +1,18 @@
+
+Sub VBA_Functions()
+    
+    'Range("B3").Value = VBA.Month(VBA.DateTime.Date)
+    'Range("B3").Value = VBA.Month(VBA.Date)
+    Range("B3").Value = VBA.Month(Date)
+    Range("B4").Value = VBA.MonthName(VBA.Month(Date))
+    Range("C5").Value = VBA.MonthName(Range("B5").Value, Abbreviate:=True)
+    'Range("B6").Value = VBA.MonthName(Month(Date), Abbreviate:=True)
+    
+    Range("B9").Value = VBA.IsEmpty(Range("A9"))
+    Range("B10").Value = VBA.IsEmpty(Range("A10"))
+    Range("B11").Value = VBA.IsEmpty(Range("A11"))
+    
+    Debug.Print TypeName(Range("B4").Value)
+    Debug.Print TypeName(Range("B9").Value)
+    
+End Sub

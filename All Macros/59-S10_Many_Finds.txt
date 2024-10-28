@@ -1,0 +1,35 @@
+
+Sub Many_Finds()
+    Dim CompId As Range
+    Dim i As Byte
+    Dim FirstMatch As Variant
+    Dim Start
+    
+    Range("D3:D6").ClearContents
+    
+    i = 3
+    
+    'Start = VBA.Timer
+    
+    Set CompId = Range("A:A").Find(what:=Range("B3").Value, _
+                 LookIn:=xlValues, lookat:=xlWhole)
+                 
+    If Not CompId Is Nothing Then
+        Range("D" & i).Value = CompId.Offset(0, 4).Value
+        FirstMatch = CompId.Address
+        Do
+            Set CompId = Range("A:A").FindNext(After:=CompId)
+            If CompId.Address = FirstMatch Then Exit Do
+            i = i + 1
+            Range("D" & i).Value = CompId.Offset(0, 4).Value
+        Loop
+        
+        'Debug.Print Round(Timer - Start, 3)
+        'Application.Speech.Speak "Well Done!" & i - 2 & " matches were found."
+    Else
+        MsgBox "Company not found!"
+    End If
+    
+End Sub
+
+

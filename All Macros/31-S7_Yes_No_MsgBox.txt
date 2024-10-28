@@ -1,0 +1,13 @@
+
+Sub Yes_No_MsgBox()
+    Dim Answer As VbMsgBoxResult
+    Answer = MsgBox("Are you sure about this?", vbYesNo + vbQuestion + vbDefaultButton2, _
+    "Clear cells")
+    
+    If Answer = vbYes Then
+        Range("A7:B9").Clear
+    Else
+        Exit Sub
+    End If
+    
+End Sub

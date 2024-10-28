@@ -1,0 +1,16 @@
+
+Sub Count_If_Formula()
+    Dim cell As Range
+    Dim CountFormula As Long
+    
+    For Each cell In ActiveSheet.UsedRange
+'        If cell.HasFormula Then
+        If cell.HasFormula = True Then
+            CountFormula = CountFormula + 1
+        End If
+    
+    Next cell
+
+    Range("B6").Value = CountFormula
+
+End Sub

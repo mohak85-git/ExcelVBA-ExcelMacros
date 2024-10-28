@@ -1,0 +1,34 @@
+Sub For_Next_Loop_in_Text()
+    Dim i As Long   ' for looping in each cell
+    Dim r As Long   ' for looping through rows
+    
+    Dim LastRow As Long
+    Dim myValue As String
+    Dim NumFound As Long
+    Dim TxtFound As String
+
+    Const StartRow As Byte = 10
+    
+    LastRow = Range("A" & Rows.Count).End(xlUp).Row
+    
+    For r = StartRow To LastRow
+        NumFound = 0
+        TxtFound = ""
+        
+        myValue = Range("A" & r).Value
+        For i = 1 To Len(myValue)
+            
+            If IsNumeric(VBA.Mid(myValue, i, 1)) Then
+                NumFound = NumFound & Mid(myValue, i, 1)
+            Else
+                TxtFound = TxtFound & Mid(myValue, i, 1)
+            End If
+    
+        Next i
+        
+        Range("H" & r).Value = TxtFound
+        Range("I" & r).Value = NumFound
+        
+    Next r
+End Sub
+

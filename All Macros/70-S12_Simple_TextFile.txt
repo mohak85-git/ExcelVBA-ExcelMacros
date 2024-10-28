@@ -1,0 +1,18 @@
+Sub Simple_TextFile()
+    Dim FileName As String
+    Dim FileNumber As Integer
+    
+    FileName = "C:\Users\moham\OneDrive\Current Learning - 05Oct2023\Unlock Excel VBA and Excel Macros - Udemy\Hands-On\All Macros\TestTextFile.csv"
+    FileNumber = FreeFile
+    Open FileName For Output As FileNumber
+        Print #1, "Print line 1"
+        Write #1, "Print line 2"
+        Print #1, 1
+        Write #1, 2
+        Print #1, Range("A1").Value
+        Write #1, Range("A1").Value
+    
+    Close FileNumber
+End Sub
+
+

@@ -1,0 +1,33 @@
+Option Explicit
+
+Sub Array_OneDimension()
+'    Dim MonthArray(11) As String
+'    MonthArray(0) = "Jan"
+'    MonthArray(11) = "Dec"
+    
+    ' Filling up arrays
+    Dim MonthArray(1 To 12) As String
+    Dim i As Byte
+    Dim r As Long
+    
+'    for i = 1 to len(MonthArray)
+    For i = 1 To 12
+    
+'        MonthArray(i) = Range("A" & i + 4).Value
+        MonthArray(i) = Range("mymonths").Cells(i, 1).Value
+        
+    Next i
+
+    ' Write arrays back to excel
+    Range("C5:N5").Value = MonthArray   ' By default, data is written horizontally
+    Range("C5:C16").Value = Excel.WorksheetFunction.Transpose(MonthArray)
+    
+    ' Create a report that leaves out 4 rows between each month, start from cell E7
+    For i = LBound(MonthArray) To UBound(MonthArray)
+        Range("E7").Offset(r).Value = MonthArray(i)
+        r = r + 5
+    Next i
+    
+End Sub
+
+

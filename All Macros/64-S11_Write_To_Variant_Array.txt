@@ -1,0 +1,12 @@
+
+Sub Write_To_Variant_Array()
+    Dim QuantityValue As Variant
+    Dim r As Long
+    
+    QuantityValue = Range("Quantitytbl").Value
+    For r = 1 To UBound(QuantityValue)
+        QuantityValue(r, 1) = QuantityValue(r, 1) + 10
+    Next r
+    
+    Range("Quantitytbl") = QuantityValue
+End Sub

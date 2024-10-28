@@ -1,0 +1,29 @@
+Option Explicit
+
+Sub Export_to_File()
+    Dim FileName As String
+    Dim ExpRange As Range
+    Dim ExpRow As Range
+    Dim ExpCell As Range
+    Dim myValue As Variant
+    Dim FileNumber As Integer
+    
+    FileName = "C:\Users\moham\OneDrive\Current Learning - 05Oct2023\Unlock Excel VBA and Excel Macros - Udemy\Hands-On\All Macros\ProjectActivity.csv"
+    FileNumber = FreeFile
+    
+    Open FileName For Output As FileNumber
+        Set ExpRange = Sheet7.Range("A6").CurrentRegion.Rows
+        
+        For Each ExpRow In ExpRange
+            For Each ExpCell In ExpRow.Cells
+                myValue = myValue & ExpCell.Value & ";"
+            Next ExpCell
+            myValue = Left(myValue, Len(myValue) - 1)
+            
+            Print #1, myValue
+            myValue = ""
+        Next ExpRow
+            
+    Close FileNumber
+    
+End Sub

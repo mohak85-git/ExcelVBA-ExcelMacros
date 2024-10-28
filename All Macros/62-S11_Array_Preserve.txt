@@ -1,0 +1,22 @@
+Sub Array_Preserve()
+    
+    Dim Cust() As String
+    ReDim Cust(1 To 2)
+    Cust(1) = "Perino"
+    Cust(2) = "Hackr"
+    
+    'ReDim Cust(1 To 3)
+    ReDim Preserve Cust(1 To 3)
+    
+    Cust(3) = "Pes"
+    'MsgBox Cust(1) & vbNewLine & Cust(2) & vbNewLine & Cust(3)
+    
+    
+    ReDim Preserve Cust(1 To 2)
+    ReDim Cust(1 To 2)
+    
+'    ReDim Preserve Cust(2 To 3)    ' Causes error, the index should start from beginning i.e., 1
+'    ReDim Cust(2 To 3)    ' Causes error, the index should start from beginning i.e., 1
+    
+End Sub
+

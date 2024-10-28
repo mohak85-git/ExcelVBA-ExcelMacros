@@ -1,0 +1,15 @@
+Sub Array_TwoDimensions()
+    Dim MonthInfo(1 To 12, 1 To 2) As Variant
+    Dim r As Byte
+    Dim c As Byte
+    
+    Const StartRow As Long = 4
+    
+    'fill up te rows
+    For r = 1 To 12
+        ' fill up teh columns
+        For c = 1 To 2
+            MonthInfo(r, c) = Cells(r + StartRow, c).Value
+        Next c
+    Next r
+End Sub

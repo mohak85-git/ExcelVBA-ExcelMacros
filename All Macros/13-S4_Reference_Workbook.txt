@@ -1,0 +1,21 @@
+Sub Reference_Workbook()
+    
+    'Debug.Print ActiveWorkbook.Name
+    'Debug.Print ActiveWorkbook.FullName
+    'Debug.Print ActiveWorkbook.Path
+    
+    'Debug.Print Workbooks(2).Path
+    
+    Application.Workbooks.Open "C:\Users\moham\OneDrive\Current Learning - 05Oct2023\Unlock Excel VBA and Excel Macros - Udemy\Hands-On\Destbook.xlsx"
+    
+    'Workbooks("Destbook.xlsx").Sheets(1).Range("A3").Value = "I will copy data here too"
+    
+    'ThisWorkbook.Worksheets("Copy_Resize").Range("A4").CurrentRegion.Copy _
+    'Workbooks("Destbook.xlsx").Sheets(1).Range("A4")
+    
+    ShSource.Range("A4").CurrentRegion.Copy Workbooks("Destbook.xlsx").Sheets(1).Range("A4")
+    
+    ActiveWorkbook.Close True
+    
+    
+End Sub

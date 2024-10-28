@@ -1,0 +1,5 @@
+Sub copy_filtered_list()
+    ActiveSheet.AutoFilter.Range.Copy
+    Worksheets.Add
+    Range("A11").PasteSpecial
+End Sub

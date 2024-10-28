@@ -1,0 +1,13 @@
+Sub SpecialCells()
+'
+' SpecialCells Macro
+'
+' Keyboard Shortcut: Ctrl+Shift+N
+'
+'Task 1: Write N to empty cells
+
+    Selection.CurrentRegion.Select
+    Selection.SpecialCells(xlCellTypeBlanks).Select
+    Selection.FormulaR1C1 = "N"
+    
+End Sub

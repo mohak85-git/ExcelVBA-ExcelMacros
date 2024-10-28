@@ -1,0 +1,14 @@
+
+Sub Email_Worksheet()
+    Dim ShName As String
+    Dim cell As Range
+    
+    For Each cell In Worksheets("Email").Range("A10:A11")
+        ShName = cell.Value
+        ThisWorkbook.Worksheets(ShName).Copy
+        
+        Application.Dialogs(xlDialogSendMail).Show cell.Offset(0, 1).Value, cell.Offset(0, 2).Value
+        ActiveWorkbook.Close False
+        
+    Next cell
+End Sub

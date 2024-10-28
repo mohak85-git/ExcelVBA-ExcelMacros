@@ -1,0 +1,13 @@
+Option Explicit
+
+Sub Replace_Formulas()
+    
+    Dim cell As Range
+    Dim FormulaRange As Range
+    
+    Set FormulaRange = Cells.SpecialCells(xlCellTypeFormulas)
+    For Each cell In FormulaRange
+        cell.Select
+        cell.Formula = "=iferror(" & VBA.Mid(cell.Formula, 2) & ", """")"
+    Next cell
+End Sub

@@ -1,0 +1,14 @@
+
+Sub Simple_If()
+'    If Range("B3").Value <> "" Then Range("C3").Value = Range("B3").Value
+    If Range("B3").Value <> "" Then
+        Range("C3").Value = Range("B3").Value
+    End If
+    
+    If Range("B4").Value > 0 And Range("B4").Value <= 400 Then
+        Range("C4").Value = Range("B4").Value
+    End If
+    
+    
+End Sub
+

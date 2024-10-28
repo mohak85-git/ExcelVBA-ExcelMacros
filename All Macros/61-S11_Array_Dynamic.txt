@@ -1,0 +1,25 @@
+Sub Array_Dynamic()
+    
+    Dim MonthArray() As String
+    Dim Cnt As Byte
+    Const StartRow As Long = 3
+    Dim r As Byte
+    
+    Cnt = Range("A" & StartRow).CurrentRegion.Rows.Count
+    Cnt = Cnt - 1   ' Subtract header
+    
+    If Cnt > 0 Then
+        ReDim MonthArray(1 To Cnt)
+        For r = 1 To Cnt
+            MonthArray(r) = Range("A" & StartRow + r).Value
+        Next r
+    End If
+    
+    'MsgBox "Size of array is: " & Cnt
+    
+    ReDim Preserve MonthArray(1 To 12)
+    
+'    ReDim MonthArray(1 To 12)
+    
+End Sub
+

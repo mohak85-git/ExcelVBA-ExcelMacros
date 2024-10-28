@@ -1,0 +1,30 @@
+Sub ReferToCells()
+    Dim i As Integer
+    i = 8
+    Workbooks("04-S4_ReferencingRanges_Start.xlsm").Worksheets("referencing Cells").Cells.Clear
+    'Cells.Clear
+    'Range("A1").Value = "1st"
+    Cells(1, 1).Value = "1st"   'This can also be written as Cells(1, 1) = "1st"
+    Range("A2:C2").Value = "2nd"
+    Range("A3:C3,E3:F3").Value = "3rd"
+    Range("A4,C4") = "4th"
+    Range("A5", "C5").Value = "5th"
+    Range("A" & 6, "C" & 6) = "6th"
+    Range("A" & i, "C" & i) = "8th"
+    Range(Cells(7, 1), Cells(7, 3)).Value = "7th"
+    Range("A6:C11").Cells(4, 2).Value = "9th"
+    Range("A1").Offset(9, 2).Value = "10th"
+    Range("A1:B1").Offset(10, 3).Value = "11th"
+    Range("Lastone").Value = "12th"
+    
+    ' Referencing entire rows and/or columns
+    Rows("12:14").RowHeight = 30
+    Range("16:16,18:18,20:20").RowHeight = 30
+    
+    Columns("E:F").ColumnWidth = 15
+    Range("H:H,J:J").ColumnWidth = 12
+    Range(Columns(1), Columns(3)).ColumnWidth = 25
+    
+    Cells.Columns.AutoFit
+
+End Sub

@@ -1,0 +1,8 @@
+
+Sub Simple_MsgBox()
+    
+    'VBA.Interaction.MsgBox "Hello " & Excel.Application.UserName, , "Welcome!"
+    MsgBox prompt:="Hello " & Excel.Application.UserName & "." & VBA.Constants.vbNewLine _
+    & "Thanks for stopping by.", Title:="Welcome!"
+    
+End Sub

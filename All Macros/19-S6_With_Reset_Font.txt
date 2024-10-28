@@ -1,0 +1,12 @@
+Sub With_Reset_Font()
+    Dim myRange As Range
+    Set myRange = Range("A10", "A" & Cells(Rows.Count, 1).End(xlUp).Row)
+'    Debug.Print myRange.Address
+    With myRange.Font
+        .Name = "Calibri"
+        .Size = 11
+        .Bold = False
+    
+    End With
+
+End Sub

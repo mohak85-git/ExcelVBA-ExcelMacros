@@ -1,0 +1,100 @@
+Option Explicit
+
+Sub Create_Pivot()
+'
+' Create_Pivot Macro
+'
+
+    Application.CutCopyMode = False
+    ActiveWorkbook.PivotCaches.Create(SourceType:=xlDatabase, SourceData:= _
+        "CompTable", Version:=8).CreatePivotTable TableDestination:= _
+        "PivotTables!R8C1", TableName:="PivotTable1", DefaultVersion:=8
+    Sheets("PivotTables").Select
+    Cells(8, 1).Select
+    With ActiveSheet.PivotTables("PivotTable1")
+        .ColumnGrand = True
+        .HasAutoFormat = True
+        .DisplayErrorString = False
+        .DisplayNullString = True
+        .EnableDrilldown = True
+        .ErrorString = ""
+        .MergeLabels = False
+        .NullString = ""
+        .PageFieldOrder = 2
+        .PageFieldWrapCount = 0
+        .PreserveFormatting = True
+        .RowGrand = True
+        .SaveData = True
+        .PrintTitles = False
+        .RepeatItemsOnEachPrintedPage = True
+        .TotalsAnnotation = False
+        .CompactRowIndent = 1
+        .InGridDropZones = False
+        .DisplayFieldCaptions = True
+        .DisplayMemberPropertyTooltips = False
+        .DisplayContextTooltips = True
+        .ShowDrillIndicators = True
+        .PrintDrillIndicators = False
+        .AllowMultipleFilters = False
+        .SortUsingCustomLists = True
+        .FieldListSortAscending = False
+        .ShowValuesRow = False
+        .CalculatedMembersInFilters = False
+        .RowAxisLayout xlCompactRow
+    End With
+    With ActiveSheet.PivotTables("PivotTable1").PivotCache
+        .RefreshOnFileOpen = False
+        .MissingItemsLimit = xlMissingItemsDefault
+    End With
+    ActiveSheet.PivotTables("PivotTable1").RepeatAllLabels xlRepeatLabels
+    With ActiveSheet.PivotTables("PivotTable1").PivotFields("Customer code")
+        .Orientation = xlRowField
+        .Position = 1
+    End With
+    ActiveSheet.PivotTables("PivotTable1").AddDataField ActiveSheet.PivotTables( _
+        "PivotTable1").PivotFields("Quantity"), "Sum of Quantity", xlSum
+    ActiveSheet.PivotTables("PivotTable1").AddDataField ActiveSheet.PivotTables( _
+        "PivotTable1").PivotFields("Quantity"), "Sum of Quantity2", xlSum
+    Range("C8").Select
+    ActiveSheet.PivotTables("PivotTable1").DataPivotField.PivotItems( _
+        "Sum of Quantity2").Caption = "% Quantity"
+    Range("C9").Select
+    With ActiveSheet.PivotTables("PivotTable1").PivotFields("% Quantity")
+        .Calculation = xlPercentOfTotal
+        .NumberFormat = "0.00%"
+    End With
+End Sub
+
+
+Sub Pivot_Formatting()
+    Dim PT As PivotTable
+    Set PT = ActiveSheet.PivotTables("PivotTable1")
+    
+    PT.DataBodyRange.Interior.Color = VBA.RGB(226, 226, 226)
+    PT.PivotFields("Sum of Quantity").NumberFormat = "#,##0;(#,##0)"
+    
+End Sub
+
+Sub Refresh_Pivot()
+    ThisWorkbook.RefreshAll
+    
+    Dim PT As PivotTable
+    Set PT = ActiveSheet.PivotTables("PivotTable1")
+    
+    PT.PivotCache.Refresh
+    
+    Debug.Print ThisWorkbook.PivotCaches.Count
+End Sub
+
+Sub Change_Back_PivotCache()
+    ActiveSheet.PivotTables("PivotTable2").ChangePivotCache ("PivotTable1")
+    
+End Sub
+
+Sub Change_Pivot_Cache()
+    Dim PT As PivotTable
+    Set PT = ActiveSheet.PivotTables("PivotTable2")
+    
+    PT.ChangePivotCache ThisWorkbook.PivotCaches.Create(xlDatabase, "compnew")
+    
+End Sub

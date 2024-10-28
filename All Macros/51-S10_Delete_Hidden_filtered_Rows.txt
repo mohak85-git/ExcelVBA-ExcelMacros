@@ -1,0 +1,16 @@
+Sub Delete_Hidden_filtered_Rows()
+    Dim LastRow As Long
+    Dim r As Long   ' for looping through rows
+    
+    Const StartRow As Byte = 10
+    
+    LastRow = Range("A" & StartRow).CurrentRegion.Rows.Count - 1 + StartRow - 1
+    For r = LastRow To StartRow Step -1
+        If Rows(r).Hidden = True Then
+            Range("H" & r).Value = "X"
+            'Rows(r).Delete
+        End If
+    
+    Next r
+End Sub
+

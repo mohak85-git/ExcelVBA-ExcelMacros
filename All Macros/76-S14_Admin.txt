@@ -1,0 +1,52 @@
+Option Explicit
+Public TaskRow As Long
+
+Sub Entry_Point()
+    With Application
+        .ScreenUpdating = False
+        .DisplayAlerts = False
+        .Calculation = xlCalculationManual
+        .StatusBar = "Your Assistant is Busy Working"
+    End With
+End Sub
+
+Sub Exit_Point()
+
+With Application
+    .ScreenUpdating = True
+    .DisplayAlerts = True
+    .Calculation = xlCalculationAutomatic
+    .CutCopyMode = False
+    .StatusBar = ""
+End With
+
+End Sub
+
+Sub Clear_OldMonth()
+    'clear summary data sheet
+    shAll.Range("A2", "A" & shAll.Rows.Count - 1).EntireRow.Delete
+    shStart.Range("B20:B33").ClearContents
+End Sub
+
+Sub Admin_Tasks()
+    Dim InputPass As String, Password As String
+    Password = "me"
+    InputPass = VBA.InputBox("Enter Password to toggle access")
+    If InputPass = "" Then Exit Sub
+    
+    If InputPass <> Password Then
+        MsgBox Title:="Incorrect Password", prompt:="The Password is Incorrect!", Buttons:=vbCritical
+        Exit Sub
+    End If
+    Application.ScreenUpdating = False
+    If shAll.Visible = xlSheetVisible Then
+        shAll.Visible = xlSheetVeryHidden
+        shMap.Visible = xlSheetVeryHidden
+        shNewDat.Visible = xlSheetVeryHidden
+    Else
+         shAll.Visible = xlSheetVisible
+        shMap.Visible = xlSheetVisible
+        shNewDat.Visible = xlSheetVisible
+    End If
+    Application.ScreenUpdating = False
+End Sub

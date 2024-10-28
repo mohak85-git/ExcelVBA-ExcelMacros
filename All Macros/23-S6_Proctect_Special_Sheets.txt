@@ -1,0 +1,16 @@
+Sub Proctect_Special_Sheets()
+    Dim Sh As Worksheet
+    For Each Sh In ThisWorkbook.Worksheets
+        If Sh.Name = "Purpose" Then
+            Sh.Protect Password:="test"
+            
+        ElseIf Sh.CodeName = "ShWith" Then
+            ' do nothing
+        
+        Else
+            Sh.Protect Password:="test", AllowFormattingCells:=True, AllowFormattingColumns:=True, _
+            AllowFormattingRows:=True
+        End If
+    Next Sh
+End Sub
+

@@ -1,0 +1,22 @@
+Option Explicit
+
+Sub Hardcoded_Workbook_copy_NoMacros()
+    
+    '1: Save the current workbook
+        ThisWorkbook.Save
+    
+    '2: Select all sheets, copy and paste special all
+        Sheets.Select
+        Cells.Copy
+        Cells.PasteSpecial xlPasteValues
+    
+    Application.DisplayAlerts = False
+    '3: Save the workbook with SaveAs (be careful you dont just SAVE, but SAVEAS)
+    '4: Save it in the same directory as this workbook but before the name put "HC_"
+    'Bonus: Add today's date in the form of "yymmdd" after "HC_" so "HC_yymmdd_S4_ReferencingRanges"
+        ThisWorkbook.SaveAs Filename:=ThisWorkbook.Path & "\HC_" & VBA.Format(VBA.Date, "YYMMDD") & _
+        "_" & VBA.Replace(ThisWorkbook.Name, ".xlsm", ""), FileFormat:=Excel.xlOpenXMLWorkbook
+    
+    Application.DisplayAlerts = True
+    
+End Sub

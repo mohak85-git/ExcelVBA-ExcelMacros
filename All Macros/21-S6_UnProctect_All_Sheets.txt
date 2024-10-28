@@ -1,0 +1,10 @@
+Sub UnProctect_All_Sheets()
+    Dim Sh As Worksheet
+    For Each Sh In ThisWorkbook.Worksheets
+    
+'        Sh.Unprotect
+'        Debug.Print Sh.Name
+        Sh.Unprotect Password:="test"
+    
+    Next Sh
+End Sub

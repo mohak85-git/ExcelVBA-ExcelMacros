@@ -1,0 +1,15 @@
+Sub Excel_InputBox_Range()
+    Dim myRange As Range
+    Dim cellBlank As Long, cellNum As Long, cellOther As Long
+    On Error GoTo Leave
+    
+    Set myRange = Application.InputBox("Count the number of cells", "Checking Cells...", , , , , , 8)
+    cellBlank = Excel.WorksheetFunction.CountBlank(myRange)
+    cellNum = Excel.WorksheetFunction.Count(myRange)
+    cellOther = Excel.WorksheetFunction.CountA(myRange) - cellNum
+    MsgBox cellBlank & " cells are blank." & vbNewLine _
+    & cellNum & " cells have numbers." & vbNewLine _
+    & cellOther & " cells are non-numeric."
+    
+Leave:
+End Sub

@@ -1,0 +1,17 @@
+Option Explicit
+
+Sub One_Find()
+    Dim CompId As Range
+    
+    Range("C3").ClearContents
+    
+    Set CompId = Range("A:A").Find(what:=Range("B3").Value, _
+                 LookIn:=xlValues, lookat:=xlWhole)
+    
+    If Not CompId Is Nothing Then
+        Range("C3").Value = CompId.Offset(0, 4).Value
+    Else
+        MsgBox "Company not found!"
+    End If
+    
+End Sub

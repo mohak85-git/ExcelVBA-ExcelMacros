@@ -1,0 +1,31 @@
+Sub Range_Property_Method_Examples()
+    
+    'Example of Property --> Text Property
+    '___________________________
+    Range("B6").Value = Range("B5").Value
+    Range("B7").Value = Range("B5").Text
+    
+    Debug.Print TypeName(Range("B5").Value)
+    Debug.Print TypeName(Range("B5").Text)
+    
+    Debug.Print Range("B6").Interior.ColorIndex
+    Debug.Print Range("B6").Interior.Color
+    
+    Debug.Print Range("B7").Interior.ColorIndex
+    Debug.Print Range("B7").Interior.Color
+    
+    '___________________________
+    'Example of Method --> Delete
+    '___________________________
+    
+    Range("B6").Delete xlShiftToLeft
+    Range("B9").EntireRow.Delete
+    
+    '___________________________
+    'Select cell A1 on Tab "Purpose"
+    '___________________________
+    
+    Worksheets("Purpose").Select
+    Range("A1").Select
+    
+End Sub

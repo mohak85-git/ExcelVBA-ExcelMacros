@@ -1,0 +1,14 @@
+
+Sub Excel_InputBox()
+    Dim CName As String
+    Dim NextRow As Long
+    Dim CAmount As Long
+    CName = VBA.InputBox("Please input new Customer Name", "Customer Master")
+    NextRow = Cells(Rows.Count, 1).End(xlUp).Row + 1
+    
+    'write back to sheet in proper format
+    Range("A" & NextRow).Value = Excel.WorksheetFunction.Proper(CName)
+    CAmount = Excel.Application.InputBox(prompt:="Please Input Amount", Title:="Amount", Type:=1)
+    Cells(NextRow, 2).Value = CAmount
+    
+End Sub
